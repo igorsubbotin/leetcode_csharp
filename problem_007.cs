@@ -60,7 +60,4 @@ public class Solution {
     private static int GetSign(int[] n) {
         return n[n.Length - 1];
     }
-    private static void ConsoleArray(int[] a) {
-        Console.WriteLine(string.Join(",", a.Select(x => x.ToString())));
-    }
 }
