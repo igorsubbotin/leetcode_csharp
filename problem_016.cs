@@ -18,7 +18,6 @@ public class Solution {
                     min = abs;
                     result = sum;
                 }
-                
             }
         }
         return result;
