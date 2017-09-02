@@ -5,25 +5,12 @@ public class Solution {
         var left = index - 1;
         var right = index;
         while (k > 0) {
-            if (left == -1) {
-                right++;
-            } else if (right == arr.Count) {
-                left--;
-            }
-            else {
-                var leftDiff = Math.Abs(x - arr[left]);
-                var rightDiff = Math.Abs(x - arr[right]);
-                if (leftDiff <= rightDiff) {
-                    left--;
-                } else {
-                    right++;
-                }
-            }
+            if (left == -1) right++;
+            else if (right == arr.Count || Math.Abs(x - arr[left]) <= Math.Abs(x - arr[right])) left--;
+            else right++;
             k--;
         }
-        left++;
-        right--;
-        return arr.Skip(left).Take(right - left + 1).ToList();
+        return arr.Skip(left + 1).Take(right - left - 1).ToList();
     }
     
     private static int FindIndex(IList<int> arr, int target, int left, int right) {
