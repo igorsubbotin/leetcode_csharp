@@ -4,9 +4,8 @@ public class Solution {
         var max = int.MinValue;
         var sum = 0;
         for (var i = 0; i < nums.Length; i++) {
-            max = Math.Max(max, nums[i]);
             sum += nums[i];
-            max = Math.Max(max, sum);
+            max = Math.Max(Math.Max(max, nums[i]), sum);
             if (sum < 0) sum = 0;
         }
         return max;
