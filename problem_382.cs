@@ -8,21 +8,28 @@
  * }
  */
 public class Solution {
-    private readonly IList<int> list = new List<int>();
+    private readonly ListNode head;
     private readonly Random rnd = new Random();
     
     /** @param head The linked list's head.
         Note that the head is guaranteed to be not null, so it contains at least one node. */
     public Solution(ListNode head) {
-        while (head != null) {
-            list.Add(head.val);
-            head = head.next;
-        }
+        this.head = head;
     }
     
     /** Returns a random node's value. */
     public int GetRandom() {
-        return list[rnd.Next(list.Count)];
+        ListNode result = null;
+        var current = head;
+        
+        for(var i = 1; current != null; i++) {
+            if (rnd.Next(i) == 0) {
+                result = current;
+            }
+            current = current.next;
+        }
+        
+        return result.val;
     }
 }
 
