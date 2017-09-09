@@ -4,14 +4,10 @@ public class Solution {
         var result = new List<int>();
         var window = new PriorityQueue();
         var i = 0;
-        while (i < k - 1) {
-            window.Add(nums[i]);
-            i++;
-        }
+        while (i < k - 1) window.Add(nums[i++]);
         while (i < nums.Length) {
-            window.Add(nums[i]);
+            window.Add(nums[i++]);
             result.Add(window.Max);            
-            i++;
             window.Remove(nums[i - k]);
         }
         return result.ToArray();
