@@ -25,7 +25,7 @@ public class Solution {
                 break; 
             }
         }
-        if(!isCycle) return null;
+        if (!isCycle) return null;
         first = head;
         while (first != second) {
             first = first.next;
