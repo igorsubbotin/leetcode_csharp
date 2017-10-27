@@ -2,20 +2,21 @@
 public class Solution {
     public string Convert(string s, int numRows) {
         if (numRows == 1) return s;
-        var result = string.Empty;
+        var result = new StringBuilder();
         var step = GetStepSize(numRows);
         for (var i = 0; i < numRows; i++) {
             var j = i;
+            var substep = GetStepSize(numRows - i);
             while (j < s.Length) {
-                result += s[j];
+                result.Append(s[j]);
                 if (i != 0 && i != numRows - 1) {
-                    var k = j + GetStepSize(numRows - i);
-                    if (k < s.Length) result += s[k];
+                    var k = j + substep;
+                    if (k < s.Length) result.Append(s[k]);
                 }
                 j += step;
             }
         }
-        return result;
+        return result.ToString();
     }
     
     private static int GetStepSize(int numRows) {
